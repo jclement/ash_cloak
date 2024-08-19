@@ -3,7 +3,7 @@ defmodule AshCloak.Changes.Encrypt do
   use Ash.Resource.Change
   @impl true
   def atomic(_changeset, _opts, _context) do
-    :ok
+    {:ok, change(changeset, opts, context)}
   end
   def change(changeset, opts, _) do
     Ash.Changeset.before_action(changeset, fn changeset ->

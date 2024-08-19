@@ -1,7 +1,10 @@
 defmodule AshCloak.Changes.Encrypt do
   @moduledoc "Takes an argument, and encrypts it into an attribute called `encrypted_{attribute}`"
   use Ash.Resource.Change
-
+  @impl true
+  def atomic(_changeset, _opts, _context) do
+    :ok
+  end
   def change(changeset, opts, _) do
     Ash.Changeset.before_action(changeset, fn changeset ->
       attribute = opts[:field]
